@@ -14,7 +14,7 @@ let mongo: any;
 beforeAll(async () => {
   jest.clearAllMocks();
   process.env.JWT_KEY = "asdf";
-  const mongo = MongoMemoryServer.create();
+  mongo = await MongoMemoryServer.create();
   const mongoUri = (await mongo).getUri();
 
   await mongoose.connect(mongoUri, {});
